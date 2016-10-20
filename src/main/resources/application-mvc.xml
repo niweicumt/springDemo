@@ -7,12 +7,23 @@
 	   					   http://www.springframework.org/schema/context
 	   					   http://www.springframework.org/schema/context/spring-context-4.1.xsd
 	   					   ">
-    <context:component-scan base-package="org.study.spring.mvc" />
+    <!--原始的controller配置, 可以不配置,默认就是这个-->
+    <!--<bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">-->
+    <!--</bean>-->
 
+    <!--自定义的AbsController,name为客户端访问的url-->
+    <bean name="/absController.do" class="org.study.spring.mvc.controller.AbsController">
+        <property name="viewName" value="absController"></property>
+    </bean>
+
+    <!--定义view查找的路径-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/view/" />
         <property name="suffix" value=".jsp" />
     </bean>
+
+    <!--controller注解扫描-->
+    <context:component-scan base-package="org.study.spring.mvc" />
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -26,4 +37,5 @@
             <ref bean="dataSource"></ref>
         </property>
     </bean>
+
 </beans>

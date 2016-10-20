@@ -23,6 +23,7 @@ jdbc
 ----
 
 * TestJdbc spring直接使用jdbc的例子
+* 使用了mysql数据库,所以提供了表结构和数据的初始化脚本,路径为resources/db/init.sql
 
 iBatis
 ------
@@ -42,5 +43,14 @@ spring mvc 例子运行说明
 比如发布到本地8080端口，则web项目路径
 http://localhost:8080/springDemo/
 
-HelloController的printHello方法访问路径
-http://localhost:8080/springDemo/hello
+* 原始的mvc配置
+需要在application-mvc.xml配置 BeanNameUrlHandlerMapping,自定义的AbsController,InternalResourceViewResolver
+访问的路径
+http://localhost:8080/springDemo/absController.do?reqParam1=hello
+
+* mvc注解配置
+HelloAnnotationController的printHello方法访问路径
+http://localhost:8080/springDemo/helloAnnotation/print
+
+* mvc注解包含service jdbc的例子
+http://localhost:8080/springDemo/user/id/2976
