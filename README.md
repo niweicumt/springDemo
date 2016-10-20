@@ -52,6 +52,9 @@ http://localhost:8080/springDemo/absController.do?reqParam1=hello
 HelloAnnotationController的printHello方法访问路径
 http://localhost:8080/springDemo/helloAnnotation/print
 
-* mvc注解,rest式url,包含service jdbc的例子
+* mvc注解,rest式url,包含service,jdbc的例子
 访问路径
 http://localhost:8080/springDemo/user/id/2976
+
+
+
