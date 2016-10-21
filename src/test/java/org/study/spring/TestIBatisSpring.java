@@ -25,8 +25,8 @@ public class TestIBatisSpring {
      * 基于 SqlSessionTemplate 查询
      */
     @Test
-    public void querUserById(){
-        SqlSessionTemplate sqlSessionTemplate = (SqlSessionTemplate)container.getBean("sqlSessionTemplate");
+    public void querUserById() {
+        SqlSessionTemplate sqlSessionTemplate = (SqlSessionTemplate) container.getBean("sqlSessionTemplate");
         Assert.assertNotNull(sqlSessionTemplate);
 
         User user = sqlSessionTemplate.selectOne("org.study.spring.ibatis.User.querUserById", 1);
@@ -38,8 +38,8 @@ public class TestIBatisSpring {
      * 基于 SqlSessionDaoSupport 查询修改
      */
     @Test
-    public void sqlSessionDaoSupport(){
-        UserDao userDao = (UserDao)container.getBean("userDao");
+    public void sqlSessionDaoSupport() {
+        UserDao userDao = (UserDao) container.getBean("userDao");
         Assert.assertNotNull(userDao);
 
         User param = new User();

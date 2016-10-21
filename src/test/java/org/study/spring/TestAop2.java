@@ -26,41 +26,41 @@ public class TestAop2 {
      * spring2.0开始的Aspect注解
      */
     @Test
-    public void aspectJProxyFactory(){
+    public void aspectJProxyFactory() {
         AspectJProxyFactory weaver = new AspectJProxyFactory();
         weaver.setProxyTargetClass(true);
         weaver.setTarget(new Foo());
         weaver.addAspect(PerformanceTraceAspect.class);
 
         Object proxy = weaver.getProxy();
-        ((Foo)proxy).method1();
-        ((Foo)proxy).method2();
+        ((Foo) proxy).method1();
+        ((Foo) proxy).method2();
     }
 
     /**
      * 基于XSD的AspectJ形式自动代理
      */
     @Test
-    public void xsdAspectJProxy(){
+    public void xsdAspectJProxy() {
         Object proxy = container.getBean("foo");
-        ((Foo)proxy).method1();
+        ((Foo) proxy).method1();
         System.out.println("----------------------");
-        ((Foo)proxy).method2();
+        ((Foo) proxy).method2();
     }
 
     /**
      * 基于XSD的AspectJ形式自动代理
      */
     @Test
-    public void nestableInvocation(){
+    public void nestableInvocation() {
         AspectJProxyFactory weaver = new AspectJProxyFactory(new NestableInvocationBO());
         weaver.setProxyTargetClass(true);
         weaver.setExposeProxy(true);
         weaver.addAspect(PerformanceTraceNestableInvocationAspect.class);
 
         Object proxy = weaver.getProxy();
-        ((NestableInvocationBO)proxy).nestMethod2();
+        ((NestableInvocationBO) proxy).nestMethod2();
         System.out.println("----------------------");
-        ((NestableInvocationBO)proxy).nestMethod1();
+        ((NestableInvocationBO) proxy).nestMethod1();
     }
 }

@@ -40,25 +40,25 @@ spring mvc 例子运行说明
 -----------------
 
 按照标准的maven项目目录，所以可以直接在项目根目录下执行mvn clean install命令，将应用打成war包执行  
-比如发布到本地8080端口，则web项目路径  
+比如发布到本地8080端口，则web项目路径:  
 http://localhost:8080/springDemo/
 
 * 原始的mvc配置  
 需要在application-mvc.xml配置BeanNameUrlHandlerMapping,自定义的AbsController,InternalResourceViewResolver  
-访问的路径  
+访问的路径:  
 http://localhost:8080/springDemo/absController.do?reqParam1=hello
 
 * mvc注解配置
 HelloAnnotationController的printHello方法  
-访问路径  
+访问路径:  
 http://localhost:8080/springDemo/helloAnnotation/print
 
 * mvc注解配置,包含pojo参数的自动mapping  
-访问路径  
+访问路径:  
 http://localhost:8080/springDemo/helloAnnotation/book?selfDefineReqParam=hello&bookName=javasleep&bookPublisher=chinapub
 
 * mvc注解,rest式url,包含service,jdbc的例子
-访问路径  
+访问路径:  
 http://localhost:8080/springDemo/user/id/2976
 
 

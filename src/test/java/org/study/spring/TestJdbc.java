@@ -33,16 +33,16 @@ public class TestJdbc {
     public void setup() {
         container = new ClassPathXmlApplicationContext("application-jdbc.xml");
 
-        jdbcTemplate = (JdbcTemplate)container.getBean("jdbcTemplate");
+        jdbcTemplate = (JdbcTemplate) container.getBean("jdbcTemplate");
     }
 
     @Test
-    public void getJdbcTemplate(){
+    public void getJdbcTemplate() {
         Assert.assertNotNull(jdbcTemplate);
     }
 
     @Test
-    public void querySingle(){
+    public void querySingle() {
         Map<String, Object> map = jdbcTemplate.queryForMap("select id, user_no from t_user where id = (select max(id) from t_user)");
         Assert.assertNotNull(map);
         Assert.assertNotNull(map.get("id"));
@@ -97,10 +97,10 @@ public class TestJdbc {
     }
 
     @Test
-    public void testJdbcDaoSupport(){
+    public void testJdbcDaoSupport() {
         int id = 1;
         String userNo = "niwei-test";
-        CustomerDao customerDao = (CustomerDao)container.getBean("customerDao");
+        CustomerDao customerDao = (CustomerDao) container.getBean("customerDao");
         int rows = customerDao.updateUserNo(id, userNo);
         Assert.assertEquals(rows, 1);
 

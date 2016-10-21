@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.expression.AccessException;
 import org.study.spring.transaction.AccountClient;
 import org.study.spring.transaction.bean.TxAccount;
 import org.study.spring.transaction.service.ITxAccountService;

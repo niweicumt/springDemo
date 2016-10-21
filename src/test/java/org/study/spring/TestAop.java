@@ -37,11 +37,11 @@ public class TestAop {
     /**
      * 目标类没有实现任何接口,基于类的动态代理
      * 因为目标对象类Executable没有实现任何接口,所以ProxyFactory会对其进行基于类的代理
-     *
+     * <p/>
      * 符合以下三种情况之一的,ProxyFactory会对目标类基于类对代理:
-     *  1.目标类没有实现任何接口
-     *  2.setProxyTargetClass(true)
-     *  3.setOptimize(true)
+     * 1.目标类没有实现任何接口
+     * 2.setProxyTargetClass(true)
+     * 3.setOptimize(true)
      */
     @Test
     public void baseCglibProxy() {
@@ -58,15 +58,15 @@ public class TestAop {
      * 对象级别的拦截
      */
     @Test
-    public void baseIntroduction(){
+    public void baseIntroduction() {
         ProxyFactory weaver = new ProxyFactory(new Developer());
         weaver.setInterfaces(new Class[]{IDeveloper.class, ITest.class});
         TesterFetureIntroductionInteceptor advice = new TesterFetureIntroductionInteceptor();
         weaver.addAdvice(advice);
 
         Object proxy = weaver.getProxy();
-        ((ITest)proxy).testSoftware();
-        ((IDeveloper)proxy).developSoftware();
+        ((ITest) proxy).testSoftware();
+        ((IDeveloper) proxy).developSoftware();
     }
 
 }
