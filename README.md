@@ -52,9 +52,14 @@ http://localhost:8080/springDemo/absController.do?reqParam1=hello
 HelloAnnotationController的printHello方法访问路径
 http://localhost:8080/springDemo/helloAnnotation/print
 
+* mvc注解配置,包含pojo参数的自动mapping,访问路径
+http://localhost:8080/springDemo/helloAnnotation/book?selfDefineReqParam=hello&bookName=javasleep&bookPublisher=chinapub
+
 * mvc注解,rest式url,包含service,jdbc的例子
 访问路径
 http://localhost:8080/springDemo/user/id/2976
 
 
-
+作者联系方式
+======
+niweicumt@gmail.com
