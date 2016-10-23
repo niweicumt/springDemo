@@ -52,4 +52,10 @@ http://localhost:8080/springDemo/helloAnnotation/book?selfDefineReqParam=hello&b
 url访问例子:  
 http://localhost:8080/springDemo/user/id/2976
 
+## JMS
+
+使用的ActiveMQ,所以本地测试时需要先安转并启动activemq  
+发收消息包含同步和异步两种方式  
+
+
 

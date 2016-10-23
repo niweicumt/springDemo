@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+	   					   http://www.springframework.org/schema/jms
+	   					   http://www.springframework.org/schema/jms/spring-jms-4.0.xsd
+	   					   ">
+
+    <!--配置连接ActiveMQ的ConnectionFactory-->
+    <bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+    </bean>
+
+    <!--为了提高效率，配置一个连接池-->
+    <bean id="cachedConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <property name="targetConnectionFactory" ref="amqConnectionFactory"/>
+        <property name="sessionCacheSize" value="10"/>
+    </bean>
+
+    <!--配置Queue类型的destination-->
+    <bean id="queueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="MyJms.Queue.Test"/>
+    </bean>
+
+    <!--配置Queue类型的destination,用于异步消息-->
+    <bean id="asyncQueueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="MyJms.Queue.Test.Async"/>
+    </bean>
+
+    <!--配置Spring的JmsTemplate-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="cachedConnectionFactory"/>
+        <property name="defaultDestination" ref="queueDestination"/>
+    </bean>
+
+    <!--以下为异步消息配置-->
+
+    <!--配置Spring的JmsTemplate,用于异步消息-->
+    <bean id="asyncJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="cachedConnectionFactory"/>
+        <property name="defaultDestination" ref="asyncQueueDestination"/>
+    </bean>
+
+    <!--配置异步接收消息监听器-->
+    <bean id="jmsMessageListener" class="org.study.spring.jms.MyMessageListenerPojo"/>
+
+    <!--配置listener到listener-container当中-->
+    <jms:listener-container
+            container-type="default"
+            connection-factory="cachedConnectionFactory"
+            acknowledge="auto"
+    >
+        <jms:listener destination="MyJms.Queue.Test.Async" ref="jmsMessageListener" />
+    </jms:listener-container>
+
+</beans>
