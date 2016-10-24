@@ -65,6 +65,6 @@ TestSchedule中的测试用例只是将当前睡眠20秒,其间schedule的线程
 几种remoting方案共用org.study.spring.remote.IRmiWeatherService接口和org.study.spring.remote.RmiWeatherService的本地服务类
 
 * TestRmi spring基于rmi的remoting方案
-* TestHttp spring基于http的remoting方案,需要本地开启web项目  
+* TestHttp 包括spring基于http的remoting方案和集成hessian的方案,需要本地开启web项目  
 web项目的http端口我以8080为例子,可以在application-http.xml中修改,见weatherServiceClientProxy的serviceUrl属性配置
 

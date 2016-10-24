@@ -16,7 +16,7 @@ public class TestRmi {
 
     @Before
     public void setup() {
-        container = new ClassPathXmlApplicationContext("application-rmi.xml");
+        container = new ClassPathXmlApplicationContext("application-remote-rmi.xml");
     }
 
     @Test

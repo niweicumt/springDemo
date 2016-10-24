@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+	   					   ">
+
+    <bean id="weatherService" class="org.study.spring.remote.WeatherService">
+    </bean>
+
+    <!--spring提供的http方式 start-->
+    <!--将本地服务以spring提供的http方式暴露出去,可以通过http://localhost:8080/springDemo/remoting/weatherService/http访问-->
+    <bean name="/weatherService/http" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+        <property name="serviceInterface" value="org.study.spring.remote.IWeatherService"></property>
+        <property name="service" ref="weatherService"></property>
+    </bean>
+    <bean id="httpClientProxy"
+          class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+        <property name="serviceUrl" value="http://localhost:8080/springDemo/remoting/weatherService/http"/>
+        <property name="serviceInterface" value="org.study.spring.remote.IWeatherService"/>
+    </bean>
+    <bean id="httpClient" class="org.study.spring.remote.WeatherServiceClient">
+        <property name="weatherService" ref="httpClientProxy"/>
+    </bean>
+    <!--spring提供的http方式 end-->
+
+    <!--spring集成的hessian方式 start-->
+    <bean name="/weatherService/hessian" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="serviceInterface" value="org.study.spring.remote.IWeatherService"></property>
+        <property name="service" ref="weatherService"></property>
+    </bean>
+    <bean id="hessianClientProxy"
+          class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="http://localhost:8080/springDemo/remoting/weatherService/hessian"/>
+        <property name="serviceInterface" value="org.study.spring.remote.IWeatherService"/>
+    </bean>
+    <bean id="hessianClient" class="org.study.spring.remote.WeatherServiceClient">
+        <property name="weatherService" ref="hessianClientProxy"/>
+    </bean>
+    <!--spring提供的hessian方式 end-->
+
+</beans>

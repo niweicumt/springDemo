@@ -7,17 +7,23 @@
     <bean id="weatherService" class="org.study.spring.remote.WeatherService">
     </bean>
 
-    <!--可以从 rmi://host:1099/WeatherService 访问远程服务 -->
+    <bean id="RemoteRmiRegistry" class="org.springframework.remoting.rmi.RmiRegistryFactoryBean">
+        <property name="alwaysCreate" value="true" />
+        <property name="port" value="1091"></property>
+    </bean>
+
+    <!--可以从 rmi://host:1091/WeatherService 访问远程服务 -->
     <bean id="weatherServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
         <property name="serviceName" value="WeatherService"/>
         <property name="serviceInterface" value="org.study.spring.remote.IWeatherService"/>
         <property name="service" ref="weatherService"/>
-        <property name="registryPort" value="1099"/>
+        <property name="replaceExistingBinding" value="true"></property>
+        <property name="registry" ref="RemoteRmiRegistry"></property>
     </bean>
 
     <!--通过RmiProxyFactoryBean代理 rmi接口的访问-->
     <bean id="weatherServiceClientProxy" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-        <property name="serviceUrl" value="rmi://127.0.0.1:1099/WeatherService"/>
+        <property name="serviceUrl" value="rmi://127.0.0.1:1091/WeatherService"/>
         <property name="serviceInterface" value="org.study.spring.remote.IWeatherService"/>
     </bean>
 
