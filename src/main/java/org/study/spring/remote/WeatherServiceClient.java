@@ -1,4 +1,4 @@
-package org.study.spring.remote.rmi;
+package org.study.spring.remote;
 
 import lombok.Data;
 
@@ -6,9 +6,9 @@ import lombok.Data;
  * Created by niwei on 16/10/24.
  */
 @Data
-public class RmiWeatherServiceClient {
+public class WeatherServiceClient {
 
-    private IRmiWeatherService weatherService;
+    private IWeatherService weatherService;
 
     public String doMyWork() {
         return weatherService.queryWeather("Nanjing", null);

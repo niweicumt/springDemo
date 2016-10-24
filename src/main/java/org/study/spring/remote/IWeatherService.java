@@ -1,11 +1,11 @@
-package org.study.spring.remote.rmi;
+package org.study.spring.remote;
 
 import java.time.LocalDate;
 
 /**
  * Created by niwei on 16/10/24.
  */
-public interface IRmiWeatherService {
+public interface IWeatherService {
 
     /**
      * 根据时间地点查询天气

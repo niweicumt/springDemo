@@ -33,24 +33,25 @@ A spring demo project for study
 ## spring mvc 例子运行说明
 
 按照标准的maven项目目录，所以可以直接在项目根目录下执行mvn clean install命令，将应用打成war包执行  
-以发布到本地8080端口为例，web项目路径:http://localhost:8080/springDemo/
+以发布到本地8080端口为例，web项目路径:http://localhost:8080/springDemo/  
+由于需要和remote集成http服务区分,所以这里web访问的路径(见web.xml中的springMvc的servlet的url-pattern配置):http://localhost:8080/springDemo/web
 
 * 原始的mvc配置
 需要在application-mvc.xml配置BeanNameUrlHandlerMapping,自定义的AbsController,InternalResourceViewResolver  
 url访问例子:  
-http://localhost:8080/springDemo/absController.do?reqParam1=hello
+http://localhost:8080/springDemo/web/absController.do?reqParam1=hello
 
 * mvc注解配置,HelloAnnotationController的printHello方法
 url访问例子:  
-http://localhost:8080/springDemo/helloAnnotation/print
+http://localhost:8080/springDemo/web/helloAnnotation/print
 
 * mvc注解配置,包含pojo参数的自动mapping
 url访问例子:  
-http://localhost:8080/springDemo/helloAnnotation/book?selfDefineReqParam=hello&bookName=javasleep&bookPublisher=chinapub
+http://localhost:8080/springDemo/web/helloAnnotation/book?selfDefineReqParam=hello&bookName=javasleep&bookPublisher=chinapub
 
 * mvc注解,rest式url,包含service,jdbc的例子
 url访问例子:  
-http://localhost:8080/springDemo/user/id/2976
+http://localhost:8080/springDemo/web/user/id/2976
 
 ## JMS
 使用的ActiveMQ,所以本地测试时需要先安转并启动activemq  
@@ -60,4 +61,15 @@ http://localhost:8080/springDemo/user/id/2976
 集成了Quartz作为任务调度的依赖包  
 TestSchedule中的测试用例只是将当前睡眠20秒,其间schedule的线程中根据配置,每五秒会唤起一次执行调度任务  
 
+## remote
+几种remoting方案共用org.study.spring.remote.IRmiWeatherService接口和org.study.spring.remote.RmiWeatherService的本地服务类
 
+* TestRmi spring基于rmi的remoting方案
+* TestHttp spring基于http的remoting方案,需要本地开启web项目  
+web项目的http端口我以8080为例子,可以在application-http.xml中修改,见weatherServiceClientProxy的serviceUrl属性配置
+
+# spring源码学习心得
+
+## FactoryBean
+## SpringMvc
+## 模版模式
