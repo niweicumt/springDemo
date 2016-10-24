@@ -7,7 +7,7 @@ A spring demo project for study
 * 单元测试的例子都在test/java/org/study/spring 目录下
 * 为了简化pojo代码编写,引入了lombok,所有pojo的属性编写完之后不需要在写get set方法
 
-## ioc 容器
+## ioc
 
 * TestIoc spring最基本的ioc容器的例子,包括构造方法注入 属性注入 注解配置的注入
 
@@ -26,11 +26,11 @@ A spring demo project for study
 * TestIBatis iBatis使用的例子
 * TestIBatisSpring spring集成iBatis的例子
 
-## 事务管理
+## transaction
 
 * TestTransaction spring中配置事务管理的例子
 
-## spring mvc 例子运行说明
+## mvc
 
 按照标准的maven项目目录，所以可以直接在项目根目录下执行mvn clean install命令，将应用打成war包执行  
 以发布到本地8080端口为例，web项目路径:http://localhost:8080/springDemo/  
@@ -53,11 +53,11 @@ http://localhost:8080/springDemo/web/helloAnnotation/book?selfDefineReqParam=hel
 url访问例子:  
 http://localhost:8080/springDemo/web/user/id/2976
 
-## JMS
+## jms
 使用的ActiveMQ,所以本地测试时需要先安转并启动activemq  
 发收消息包含同步和异步两种方式  
 
-## 任务调度
+## schedule
 集成了Quartz作为任务调度的依赖包  
 TestSchedule中的测试用例只是将当前睡眠20秒,其间schedule的线程中根据配置,每5秒会唤起一次执行调度任务  
 
