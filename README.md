@@ -53,9 +53,11 @@ url访问例子:
 http://localhost:8080/springDemo/user/id/2976
 
 ## JMS
-
 使用的ActiveMQ,所以本地测试时需要先安转并启动activemq  
 发收消息包含同步和异步两种方式  
 
+## 任务调度
+集成了Quartz作为任务调度的依赖包  
+TestSchedule中的测试用例只是将当前睡眠20秒,其间schedule的线程中根据配置,每五秒会唤起一次执行调度任务  
 
 
