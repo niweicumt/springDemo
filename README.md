@@ -59,7 +59,7 @@ http://localhost:8080/springDemo/web/user/id/2976
 
 ## 任务调度
 集成了Quartz作为任务调度的依赖包  
-TestSchedule中的测试用例只是将当前睡眠20秒,其间schedule的线程中根据配置,每五秒会唤起一次执行调度任务  
+TestSchedule中的测试用例只是将当前睡眠20秒,其间schedule的线程中根据配置,每5秒会唤起一次执行调度任务  
 
 ## remote
 几种remoting方案共用org.study.spring.remote.IRmiWeatherService接口和org.study.spring.remote.RmiWeatherService的本地服务类
@@ -68,8 +68,3 @@ TestSchedule中的测试用例只是将当前睡眠20秒,其间schedule的线程
 * TestHttp spring基于http的remoting方案,需要本地开启web项目  
 web项目的http端口我以8080为例子,可以在application-http.xml中修改,见weatherServiceClientProxy的serviceUrl属性配置
 
-# spring源码学习心得
-
-## FactoryBean
-## SpringMvc
-## 模版模式
