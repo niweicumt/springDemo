@@ -20,7 +20,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>4.2.5.RELEASE</spring.version>
     </properties>
-
+	
+	
+	<repositories>
+		<repository>
+			<id>public</id>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+	</repositories>
+	
     <dependencies>
         <!-- Spring相关，这里的spring.version就是上方声明的版本号，这样引用更方便修改和维护 -->
         <dependency>
@@ -135,7 +143,7 @@
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-client</artifactId>
-            <version>5.14.0</version>
+            <version>5.10.0</version>
         </dependency>
 
         <!--quartz相关-->
@@ -152,5 +160,4 @@
             <version>4.0.7</version>
         </dependency>
     </dependencies>
-
 </project>
