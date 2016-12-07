@@ -70,4 +70,8 @@ web项目的http端口我以8080为例子,可以在application-http.xml中修改
 
 ## redis
 集成了redis作为缓存服务器的功能,需要本地开启redis服务器,端口默认  
-TestRedis里展示了string list set的操作示例
+TestRedis 里展示了string list set的操作示例
+
+## spring session use redis
+使用redis来存放session,需要本地开启redis服务器,端口默认  
+TestSpringSessionRedis 里验证redis 中存在spring:session:开头的key
